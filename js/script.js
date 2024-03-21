@@ -85,6 +85,7 @@ const ourTeam = [
 </div>
 */
 const cardContainer = document.getElementById('card_container');
+const inputContainer = document.getElementById('new_member');
 
 for (let i = 0; i < ourTeam.length; i++) {
     let divCard = document.createElement('div');
@@ -104,5 +105,57 @@ for (let i = 0; i < ourTeam.length; i++) {
     roleCard.classList.add('text-center');
     roleCard.innerHTML = ourTeam[i].role;
     bodyCard.appendChild(roleCard);
-    
 }
+
+/*
+<div class="input-group">
+    <span class="input-group-text">First and last name</span>
+    <input type="text" aria-label="First name" class="form-control">
+    <input type="text" aria-label="Last name" class="form-control">
+</div>
+<div class="input-group">
+    <span class="input-group-text">Role</span>
+    <input type="text" aria-label="First name" class="form-control">
+</div>
+<div class="input-group">
+    <button type="button" class="btn btn-dark">Dark</button>
+</div>
+*/
+
+let inputDiv = document.createElement('div');
+inputDiv.className = 'input-group';
+inputContainer.appendChild(inputDiv);
+let inputSpanDiv = document.createElement('span');
+inputSpanDiv.classList.add('input-group-text');
+inputSpanDiv.innerHTML = 'First and Last name';
+inputDiv.appendChild(inputSpanDiv);
+let inputFirstName = document.createElement('input');
+inputFirstName.type = 'text';
+inputFirstName.classList.add('form-control');
+inputDiv.appendChild(inputFirstName);
+let inputLastName = document.createElement('input');
+inputLastName.type = 'text';
+inputLastName.classList.add('form-control');
+inputDiv.appendChild(inputLastName);
+let inputDiv2 = document.createElement('div');
+inputDiv2.className = 'input-group';
+inputContainer.appendChild(inputDiv2);
+let inputSpanDiv2 = document.createElement('span');
+inputSpanDiv2.classList.add('input-group-text');
+inputSpanDiv2.innerHTML = 'Role';
+inputDiv2.appendChild(inputSpanDiv2);
+let inputRole = document.createElement('input');
+inputRole.type = 'text';
+inputRole.classList.add('form-control');
+inputDiv2.appendChild(inputRole);
+let inputDivBtn = document.createElement('div');
+inputDivBtn.className = 'input-group';
+inputContainer.appendChild(inputDivBtn);
+let inputBtn = document.createElement('button');
+inputBtn.type = 'button';
+inputBtn.className = 'btn btn-dark';
+inputBtn.innerHTML = 'Submit';
+inputDivBtn.appendChild(inputBtn);
+
+
+
