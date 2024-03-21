@@ -75,3 +75,34 @@ const ourTeam = [
     },
 
 ]
+
+/*
+<div class="card">
+    <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text"></p>
+        </div>
+</div>
+*/
+const cardContainer = document.getElementById('card_container');
+
+for (let i = 0; i < ourTeam.length; i++) {
+    let divCard = document.createElement('div');
+    divCard.className = 'card m-2';
+    cardContainer.appendChild(divCard);
+    let imgCard = document.createElement('img');
+    imgCard.src = `img/${ourTeam[i].img_profile}`;
+    divCard.appendChild(imgCard);
+    let bodyCard = document.createElement('div');
+    bodyCard.classList.add('card-body');
+    divCard.append(bodyCard);
+    let nameCard = document.createElement('h3');
+    nameCard.classList.add('text-center');
+    nameCard.innerHTML = ourTeam[i].firstname +' '+ ourTeam[i].lastname;
+    bodyCard.appendChild(nameCard);
+    let roleCard = document.createElement('p');
+    roleCard.classList.add('text-center');
+    roleCard.innerHTML = ourTeam[i].role;
+    bodyCard.appendChild(roleCard);
+    
+}
