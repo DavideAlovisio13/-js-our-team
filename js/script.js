@@ -30,6 +30,9 @@ Scott Estrada	        Developer	                 scott-estrada-developer.jpg
 Barbara Ramos	Graphic Designer	         barbara-ramos-graphic-designer.jpg
 */
 
+
+// array contenente gli elementi del team
+
 const ourTeam = [
 
     {
@@ -76,6 +79,9 @@ const ourTeam = [
 
 ]
 
+const cardContainer = document.getElementById('card_container');
+const inputContainer = document.getElementById('new_member');
+
 /*
 <div class="card">
     <img src="..." class="card-img-top" alt="...">
@@ -84,9 +90,7 @@ const ourTeam = [
         </div>
 </div>
 */
-const cardContainer = document.getElementById('card_container');
-const inputContainer = document.getElementById('new_member');
-
+// per ciascuno degli oggetti presenti nell'array
 for (let i = 0; i < ourTeam.length; i++) {
     let divCard = document.createElement('div');
     divCard.className = 'card m-2';
@@ -107,27 +111,16 @@ for (let i = 0; i < ourTeam.length; i++) {
     bodyCard.appendChild(roleCard);
 }
 
+
 /*
 <div class="input-group">
     <span class="input-group-text">First and last name</span>
     <input type="text" id="Firstname" class="form-control">
     <input type="text" id="Lastname" class="form-control">
 </div>
-<div class="input-group mb-3">
-    <label class="input-group-text" for="inputGroupFile01" id='imglabel'>Upload</label>
-    <input type="file" class="form-control" id="inputGroupFile01">
-</div>
-<div class="input-group">
-    <span class="input-group-text">Role</span>
-    <input type="text" id="Role" class="form-control">
-</div>
-<div class="input-group">
-    <button type="button" class="btn btn-dark">Submit</button>
-</div>
 */
-
 let inputDiv = document.createElement('div');
-inputDiv.className = 'input-group';
+inputDiv.className = 'input-group w-75 mx-auto p-3';
 inputContainer.appendChild(inputDiv);
 let inputSpanDiv = document.createElement('span');
 inputSpanDiv.classList.add('input-group-text');
@@ -143,8 +136,15 @@ inputLastName.type = 'text';
 inputLastName.classList.add('form-control');
 inputLastName.setAttribute("id", "Lastname");
 inputDiv.appendChild(inputLastName);
+
+/*
+<div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupFile01" id='imglabel'>Upload</label>
+    <input type="file" class="form-control" id="inputGroupFile01">
+</div>
+*/
 let inputImgDiv = document.createElement('div');
-inputImgDiv.className = 'input-group mb-3';
+inputImgDiv.className = 'input-group mb-3 w-75 mx-auto p-3';
 inputContainer.appendChild(inputImgDiv);
 let inputLabelImgDiv = document.createElement('label');
 inputLabelImgDiv.classList.add('input-group-text');
@@ -157,8 +157,15 @@ inputImg.type = 'file';
 inputImg.classList.add('form-control');
 inputImg.setAttribute("id", "inputGroupFile01");
 inputImgDiv.appendChild(inputImg);
+
+/*
+<div class="input-group">
+    <span class="input-group-text">Role</span>
+    <input type="text" id="Role" class="form-control">
+</div>
+*/
 let inputDiv2 = document.createElement('div');
-inputDiv2.className = 'input-group';
+inputDiv2.className = 'input-group w-50 mx-auto';
 inputContainer.appendChild(inputDiv2);
 let inputSpanDiv2 = document.createElement('span');
 inputSpanDiv2.classList.add('input-group-text');
@@ -169,8 +176,14 @@ inputRole.type = 'text';
 inputRole.classList.add('form-control');
 inputRole.setAttribute("id", "Role");
 inputDiv2.appendChild(inputRole);
+
+/*
+<div class="input-group">
+    <button type="button" class="btn btn-dark">Submit</button>
+</div>
+*/
 let inputDivBtn = document.createElement('div');
-inputDivBtn.className = 'input-group';
+inputDivBtn.className = 'input-group mx-auto justify-content-center p-3';
 inputContainer.appendChild(inputDivBtn);
 let inputBtn = document.createElement('button');
 inputBtn.type = 'button';
@@ -178,6 +191,7 @@ inputBtn.className = 'btn btn-dark';
 inputBtn.innerHTML = 'Submit';
 inputDivBtn.appendChild(inputBtn);
 
+// addEventListener sul bottone 
 const inpBtnHtml = document.querySelector('.btn');
 inpBtnHtml.addEventListener('click', function() {
     const fisrtNameVal = document.getElementById('Firstname').value;
@@ -190,7 +204,10 @@ inpBtnHtml.addEventListener('click', function() {
         'role': roleVal,
         'img_profile': imgVal
     }
+    //inserisco i dati all'interno del mio array principlae
     ourTeam.push(newMember);
+
+    //generazione nuova card
     let divCardNew = document.createElement('div');
     divCardNew.className = 'card m-2';
     cardContainer.appendChild(divCardNew);
