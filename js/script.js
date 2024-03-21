@@ -110,15 +110,19 @@ for (let i = 0; i < ourTeam.length; i++) {
 /*
 <div class="input-group">
     <span class="input-group-text">First and last name</span>
-    <input type="text" aria-label="First name" class="form-control">
-    <input type="text" aria-label="Last name" class="form-control">
+    <input type="text" id="Firstname" class="form-control">
+    <input type="text" id="Lastname" class="form-control">
+</div>
+<div class="input-group mb-3">
+    <label class="input-group-text" for="inputGroupFile01" id='imglabel'>Upload</label>
+    <input type="file" class="form-control" id="inputGroupFile01">
 </div>
 <div class="input-group">
     <span class="input-group-text">Role</span>
-    <input type="text" aria-label="First name" class="form-control">
+    <input type="text" id="Role" class="form-control">
 </div>
 <div class="input-group">
-    <button type="button" class="btn btn-dark">Dark</button>
+    <button type="button" class="btn btn-dark">Submit</button>
 </div>
 */
 
@@ -132,11 +136,27 @@ inputDiv.appendChild(inputSpanDiv);
 let inputFirstName = document.createElement('input');
 inputFirstName.type = 'text';
 inputFirstName.classList.add('form-control');
+inputFirstName.setAttribute("id", "Firstname");
 inputDiv.appendChild(inputFirstName);
 let inputLastName = document.createElement('input');
 inputLastName.type = 'text';
 inputLastName.classList.add('form-control');
+inputLastName.setAttribute("id", "Lastname");
 inputDiv.appendChild(inputLastName);
+let inputImgDiv = document.createElement('div');
+inputImgDiv.className = 'input-group mb-3';
+inputContainer.appendChild(inputImgDiv);
+let inputLabelImgDiv = document.createElement('label');
+inputLabelImgDiv.classList.add('input-group-text');
+inputLabelImgDiv.setAttribute("for", "inputGroupFile01");
+inputLabelImgDiv.setAttribute("id", "imglabel");
+inputLabelImgDiv.innerHTML = 'Image';
+inputImgDiv.appendChild(inputLabelImgDiv);
+let inputImg = document.createElement('input');
+inputImg.type = 'file';
+inputImg.classList.add('form-control');
+inputImg.setAttribute("id", "inputGroupFile01");
+inputImgDiv.appendChild(inputImg);
 let inputDiv2 = document.createElement('div');
 inputDiv2.className = 'input-group';
 inputContainer.appendChild(inputDiv2);
@@ -147,6 +167,7 @@ inputDiv2.appendChild(inputSpanDiv2);
 let inputRole = document.createElement('input');
 inputRole.type = 'text';
 inputRole.classList.add('form-control');
+inputRole.setAttribute("id", "Role");
 inputDiv2.appendChild(inputRole);
 let inputDivBtn = document.createElement('div');
 inputDivBtn.className = 'input-group';
@@ -157,5 +178,39 @@ inputBtn.className = 'btn btn-dark';
 inputBtn.innerHTML = 'Submit';
 inputDivBtn.appendChild(inputBtn);
 
+const inpBtnHtml = document.querySelector('.btn');
+inpBtnHtml.addEventListener('click', function() {
+    const fisrtNameVal = document.getElementById('Firstname').value;
+    const lastNameVal = document.getElementById('Lastname').value;
+    const imgVal = document.getElementById('inputGroupFile01').value;
+    const roleVal = document.getElementById('Role').value;
+    const newMember = {
+        'firstname': fisrtNameVal,
+        'lastname': lastNameVal,
+        'role': roleVal,
+        'img_profile': imgVal
+    }
+    ourTeam.push(newMember);
+    let divCardNew = document.createElement('div');
+    divCardNew.className = 'card m-2';
+    cardContainer.appendChild(divCardNew);
+    let imgCardNew = document.createElement('img');
+    imgCardNew.src = imgVal;
+    divCardNew.appendChild(imgCardNew);
+    let bodyCardNew = document.createElement('div');
+    bodyCardNew.classList.add('card-body');
+    divCardNew.append(bodyCardNew);
+    let nameCardNew = document.createElement('h3');
+    nameCardNew.classList.add('text-center');
+    nameCardNew.innerHTML = fisrtNameVal +' '+ lastNameVal;
+    bodyCardNew.appendChild(nameCardNew);
+    let roleCardNew = document.createElement('p');
+    roleCardNew.classList.add('text-center');
+    roleCardNew.innerHTML = roleVal;
+    bodyCardNew.appendChild(roleCardNew);
+    cardContainer.appendChild(divCardNew);
+})
+
+console.log(ourTeam)
 
 
